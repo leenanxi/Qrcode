@@ -318,22 +318,14 @@ public class CaptureActivity extends Activity implements
 	 * @param barcode
 	 *            A greyscale bitmap of the camera data which was decoded.
 	 */
-	public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
+	public void onHandleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
 
 		// 重新计时
 		inactivityTimer.onActivity();
-
+		beepManager.playBeepSoundAndVibrate();
 		lastResult = rawResult;
-
 		// 把图片画到扫描框
 		viewfinderView.drawResultBitmap(barcode);
-
-		beepManager.playBeepSoundAndVibrate();
-
-		Toast.makeText(this,
-				"识别结果:" + ResultParser.parseResult(rawResult).toString(),
-				Toast.LENGTH_SHORT).show();
-
 	}
 
 	public void restartPreviewAfterDelay(long delayMS) {

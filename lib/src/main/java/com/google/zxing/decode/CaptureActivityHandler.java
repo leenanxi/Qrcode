@@ -132,7 +132,7 @@ public final class CaptureActivityHandler extends Handler {
 				scaleFactor = bundle
 						.getFloat(DecodeThread.BARCODE_SCALED_FACTOR);
 			}
-			activity.handleDecode((Result) message.obj, barcode,
+			activity.onHandleDecode((Result) message.obj, barcode,
 					scaleFactor);
 			return;
 		} else if (what==Constants.ID_DECODE_FAILED){
